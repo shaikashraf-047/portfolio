@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shaik Ashraf Ahammad — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="description" content="Portfolio of Shaik Ashraf Ahammad — Data Engineer specializing in Databricks, Apache Airflow, PostgreSQL, AWS RDS, EDL, and solar energy analytics."/>
+
+  <style>
+    :root{
+      --bg:#263231;
+      --fg:#fff;
+      --text:#222;
+      --muted:#6b7280;
+      --accent:#DBB031;
+      --chip:#f3f4f6;
+      --border:#e5e7eb;
+      --shadow:rgba(30, 41, 59, 0.06);
+    }
+
+    *{box-sizing:border-box}
+
+    body { 
+      font-family:'Poppins',sans-serif; 
+      margin:0; 
+      color:var(--text); 
+      background:#fff; 
+      line-height:1.6;
+      font-size:16px;
+    }
+
+    h1,h2,h3 { margin:0; font-weight:700; line-height:1.2; }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; height:auto; display:block; }
+
+    /* Mobile-first approach */
+    .container { 
+      max-width:1200px; 
+      margin:0 auto; 
+      padding:0 16px;
+    }
+
+    /* Hero Section - Mobile Optimized */
+    .hero { 
+      background:var(--bg); 
+      color:var(--fg); 
+      padding:40px 0 50px 0;
+      text-align:center;
+    }
+
+    .hero-content {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:24px;
+    }
+
+    .hero-profile { 
+      order:-1; /* Image first on mobile */
+    }
+
+    .hero-profile img { 
+      width:160px; 
+      height:160px;
+      border-radius:50%; 
+      box-shadow:0 8px 32px rgba(0,0,0,.4); 
+      margin:0 auto 16px;
+      object-fit:cover;
+    }
+
+    .social { 
+      display:flex; 
+      justify-content:center; 
+      gap:12px; 
+      margin-top:8px;
+    }
+
+    .social a { 
+      width:44px; 
+      height:44px; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      background:#fff; 
+      color:#222; 
+      border-radius:50%; 
+      transition:all .3s ease;
+      box-shadow:0 2px 8px rgba(0,0,0,.1);
+    }
+
+    .social a:hover{ 
+      transform:translateY(-3px) scale(1.1);
+      box-shadow:0 4px 16px rgba(0,0,0,.2);
+    }
+
+    .hero-text h3 { 
+      font-size:16px; 
+      margin-bottom:8px; 
+      color:#d1d5db; 
+      font-weight:400;
+    }
+
+    .hero-text h1 { 
+      font-size:32px; 
+      margin-bottom:12px; 
+      letter-spacing:.5px; 
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+
+    .hero-text .last-name { color:var(--accent); }
+
+    .hero-text p { 
+      font-size:16px; 
+      margin-bottom:24px; 
+      color:#e5e7eb; 
+      max-width:400px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .btn-row { 
+      display:flex; 
+      flex-direction:column;
+      gap:12px; 
+      align-items:center;
+      width:100%;
+    }
+
+    .btn {
+      display:inline-block; 
+      padding:12px 24px; 
+      background:#fff; 
+      color:var(--bg);
+      border-radius:25px; 
+      font-weight:600; 
+      border:2px solid transparent; 
+      transition:all .3s ease;
+      width:200px;
+      text-align:center;
+      font-size:14px;
+    }
+
+    .btn:hover{ 
+      background:var(--accent); 
+      color:#fff; 
+      border-color:var(--accent); 
+      transform:translateY(-2px); 
+      box-shadow:0 6px 20px rgba(219, 176, 49, .3); 
+    }
+
+    /* Main Content */
+    main { 
+      padding:40px 0; 
+    }
+
+    section { 
+      margin-bottom:40px; 
+      scroll-margin-top:20px;
+    }
+
+    section h2 { 
+      margin-bottom:20px; 
+      font-size:24px; 
+      color:var(--bg);
+      position:relative;
+      padding-bottom:8px;
+    }
+
+    section h2::after {
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:40px;
+      height:3px;
+      background:var(--accent);
+      border-radius:2px;
+    }
+
+    /* About Section */
+    #about p {
+      font-size:16px;
+      line-height:1.7;
+      margin-bottom:20px;
+      color:#374151;
+    }
+
+    /* Skills/Chips */
+    .chips { 
+      display:flex; 
+      flex-wrap:wrap; 
+      gap:8px; 
+      margin-top:16px;
+    }
+
+    .chip { 
+      background:var(--chip); 
+      padding:8px 16px; 
+      border-radius:20px; 
+      font-weight:600; 
+      font-size:14px;
+      border:1px solid var(--border);
+      transition:all .3s ease;
+    }
+
+    .chip:hover {
+      background:var(--accent);
+      color:#fff;
+      transform:translateY(-1px);
+    }
+
+    /* Experience Cards */
+    .exp-card { 
+      border:1px solid var(--border); 
+      border-radius:16px; 
+      padding:20px; 
+      margin-bottom:20px;
+      background:#fff;
+      box-shadow:0 2px 8px var(--shadow);
+      transition:all .3s ease;
+    }
+
+    .exp-card:hover {
+      transform:translateY(-2px);
+      box-shadow:0 8px 25px rgba(0,0,0,.1);
+      border-color:var(--accent);
+    }
+
+    .exp-card h3 { 
+      font-size:18px; 
+      color:var(--bg);
+      margin-bottom:4px;
+    }
+
+    .exp-meta { 
+      color:var(--muted); 
+      font-weight:600; 
+      margin:0 0 16px 0; 
+      font-size:14px;
+    }
+
+    .exp-card ul { 
+      margin:0; 
+      padding-left:20px; 
+    }
+
+    .exp-card li { 
+      margin:8px 0; 
+      line-height:1.6;
+      color:#374151;
+    }
+
+    /* Projects Grid - Mobile First */
+    .proj-grid {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+    }
+
+    .proj {
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:20px;
+      background:#fff;
+      box-shadow:0 2px 8px var(--shadow);
+      transition:all .3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .proj:hover {
+      background:#eff6ff;
+      border-color:var(--accent);
+      box-shadow:0 8px 30px rgba(219, 176, 49, 0.15);
+      transform:translateY(-4px);
+    }
+
+    .proj h3 {
+      font-size:18px;
+      margin-bottom:8px;
+      transition:color .3s;
+      color:var(--bg);
+    }
+
+    .proj:hover h3 {
+      color:var(--accent);
+    }
+
+    .proj p {
+      margin:8px 0 0 0;
+      color:#374151;
+      transition:color .3s;
+      line-height:1.6;
+    }
+
+    .proj:hover p {
+      color:#1e293b;
+    }
+
+    /* Certifications Grid - Mobile First */
+    .cert-grid {
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:16px;
+    }
+
+    .cert {
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      background:#fff;
+      box-shadow:0 2px 8px var(--shadow);
+      text-align:center;
+      cursor:pointer;
+      transition:all .3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .cert:hover {
+      background:#eff6ff;
+      border-color:var(--accent);
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 8px 25px rgba(219, 176, 49, 0.2);
+    }
+
+    .cert-img {
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      border-radius:8px;
+      margin:0 auto 12px;
+      transition:all .3s;
+    }
+
+    .cert:hover .cert-img {
+      box-shadow:0 4px 15px rgba(30, 41, 59, 0.15);
+      transform:scale(1.1);
+    }
+
+    .cert h3 {
+      font-size:14px;
+      margin:0;
+      color:var(--text);
+      font-weight:600;
+    }
+
+    /* Contact Section */
+    #contact {
+      background:#f8fafc;
+      margin:40px -16px 0;
+      padding:40px 16px;
+      border-radius:20px 20px 0 0;
+    }
+
+    #contact h2::after {
+      background:var(--accent);
+    }
+
+    #contact p {
+      font-size:16px;
+      line-height:1.7;
+      color:#374151;
+    }
+
+    #contact a {
+      color:var(--accent);
+      font-weight:600;
+      transition:all .3s ease;
+    }
+
+    #contact a:hover {
+      color:var(--bg);
+      text-decoration:underline;
+    }
+
+    /* Footer */
+    footer { 
+      background:var(--bg); 
+      color:var(--fg);
+      padding:20px 0; 
+      text-align:center; 
+      font-size:14px; 
+      margin-top:0;
+    }
+
+    /* Modal styles - Mobile optimized */
+    .modal {
+      display:none;
+      position:fixed;
+      z-index:1000;
+      padding:20px;
+      left:0; 
+      top:0; 
+      width:100%; 
+      height:100%;
+      background-color:rgba(0,0,0,0.8);
+      backdrop-filter:blur(4px);
+    }
+
+    .modal-content {
+      display:block;
+      margin:auto;
+      max-width:90vw;
+      max-height:80vh;
+      border-radius:12px;
+      background:white;
+      padding:20px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+      position:relative;
+      top:50%;
+      transform:translateY(-50%);
+    }
+
+    .close {
+      position:absolute;
+      top:10px;
+      right:20px;
+      color:#666;
+      font-size:32px;
+      font-weight:bold;
+      cursor:pointer;
+      z-index:1001;
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:rgba(255,255,255,0.9);
+      transition:all .3s ease;
+    }
+
+    .close:hover { 
+      color:#000; 
+      background:#fff;
+      transform:scale(1.1);
+    }
+
+    /* Utility Classes */
+    .hover-effect {
+      transition:color .3s ease;
+      cursor:pointer;
+    }
+
+    .hover-effect:hover {
+      color:var(--accent);
+    }
+
+    /* Tablet Styles */
+    @media (min-width: 768px) {
+      .container {
+        padding:0 32px;
+      }
+
+      .hero {
+        padding:60px 0 70px 0;
+      }
+
+      .hero-content {
+        flex-direction:row;
+        text-align:left;
+        align-items:center;
+        gap:40px;
+      }
+
+      .hero-profile {
+        order:1;
+        flex-shrink:0;
+      }
+
+      .hero-profile img {
+        width:200px;
+        height:200px;
+      }
+
+      .hero-text {
+        flex:1;
+      }
+
+      .hero-text h1 {
+        font-size:42px;
+      }
+
+      .hero-text p {
+        font-size:18px;
+        max-width:none;
+        margin-left:0;
+        margin-right:0;
+      }
+
+      .btn-row {
+        flex-direction:row;
+        align-items:flex-start;
+      }
+
+      .btn {
+        width:auto;
+      }
+
+      .proj-grid {
+        grid-template-columns:repeat(2, 1fr);
+        gap:24px;
+      }
+
+      .cert-grid {
+        grid-template-columns:repeat(3, 1fr);
+      }
+
+      .cert-img {
+        width:64px;
+        height:64px;
+      }
+
+      .cert h3 {
+        font-size:16px;
+      }
+
+      section {
+        margin-bottom:60px;
+      }
+
+      section h2 {
+        font-size:28px;
+      }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 1024px) {
+      .hero {
+        padding:80px 0 90px 0;
+      }
+
+      .hero-text h1 {
+        font-size:48px;
+      }
+
+      .proj-grid {
+        grid-template-columns:repeat(3, 1fr);
+      }
+
+      .cert-grid {
+        grid-template-columns:repeat(4, 1fr);
+      }
+
+      main {
+        padding:60px 0;
+      }
+
+      section {
+        margin-bottom:80px;
+      }
+
+      section h2 {
+        font-size:32px;
+      }
+    }
+
+    /* Large Desktop */
+    @media (min-width: 1200px) {
+      .proj-grid {
+        grid-template-columns:repeat(3, 1fr);
+        gap:32px;
+      }
+
+      .cert-grid {
+        grid-template-columns:repeat(5, 1fr);
+      }
+    }
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text:#e5e7eb;
+        --bg:#1f2937;
+        --chip:#374151;
+        --border:#4b5563;
+      }
+
+      body {
+        background:#111827;
+        color:var(--text);
+      }
+
+      .exp-card, .proj, .cert {
+        background:#1f2937;
+        border-color:var(--border);
+      }
+
+      #contact {
+        background:#1f2937;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .hero { 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact; 
+      }
+
+      .btn, .social, .modal { 
+        display:none !important; 
+      }
+
+      a[href^="http"]::after { 
+        content:" (" attr(href) ")"; 
+        font-size:12px; 
+        color:#555; 
+      }
+
+      .proj-grid, .cert-grid {
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* High contrast mode */
+    @media (prefers-contrast: high) {
+      .btn {
+        border:2px solid currentColor;
+      }
+
+      .chip {
+        border:2px solid currentColor;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h3>Hello, I'm</h3>
+          <h1><span>Shaik</span> <span class="last-name">Ashraf</span></h1>
+          <p>Data Engineer specializing in Snowflake, Databricks, Apache Airflow, PostgreSQL, Oracle SQL & PL/SQL, AWS RDS, and EDL — building reliable data pipelines and analytics platforms.</p>
+          <div class="btn-row">
+            <a href="#projects" class="btn">See Projects</a>
+            <a href="#contact" class="btn" aria-label="Contact">Contact</a>
+            <a href="images/Shaik_Ashraf_Ahammad_Resume.docx" class="btn" download>Download Resume</a>
+          </div>
+        </div>
+        <div class="hero-profile" aria-label="Profile">
+          <img src="images/profile.png" alt="Shaik Ashraf Ahammad — profile photo" />
+          <div class="social">
+            <a href="https://www.linkedin.com/in/sashrafg" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/shaikashraf-047" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
+            <a href="mailto:ashrafahmadcle@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+      <!-- About -->
+      <section id="about">
+        <h2 class="hover-effect">About Me</h2>
+        <p>
+          Seasoned Data Engineer specializing in building scalable and reliable data pipelines and platforms for analytics.
+          Extensive hands-on expertise in database migration, orchestration, and complex data transformation using Snowflake, Databricks,
+          Apache Airflow, Oracle SQL & PL/SQL, PostgreSQL/AWS RDS, EDL/ETL, and cloud storage such as AWS S3.
+          Skilled in designing and optimizing complex SQL, architecting both batch and incremental ELT workflows,
+          and applying advanced data modeling and performance-tuning techniques to deliver production-ready solutions.
+          Recently focused on solar energy analytics—integrating SCADA/sensor data,
+          weather inputs, and production metrics to power operational dashboards and predictive insights. 
+          Recognized for delivering high-impact data solutions that drive operational excellence and business value.
+        </p>
+        <div class="chips" aria-label="Skills at a glance">
+          <span class="chip hover-effect">Databricks</span>
+          <span class="chip hover-effect">Snowflake</span>
+          <span class="chip hover-effect">Apache Airflow</span>
+          <span class="chip hover-effect">PostgreSQL</span>
+          <span class="chip hover-effect">Oracle SQL & PL/SQL</span>
+          <span class="chip hover-effect">AWS RDS</span>
+          <span class="chip hover-effect">AWS S3</span>
+          <span class="chip hover-effect">Python</span>
+          <span class="chip hover-effect">PySpark</span>
+          <span class="chip hover-effect">SQL</span>
+          <span class="chip hover-effect">ETL/ELT</span>
+          <span class="chip hover-effect">Data Modeling</span>
+          <span class="chip hover-effect">Performance Tuning</span>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <h2 class="hover-effect">Experience</h2>
+
+        <div class="exp-card">
+          <h3>Genpact, Hyderabad — Consultant · Data Engineer</h3>
+          <div class="exp-meta">Aug 2022 – Present</div>
+          <ul>
+            <li>Implemented <strong>Airflow DAGs</strong> to orchestrate ingestion between <strong>AWS S3</strong>, <strong>Databricks</strong>, and <strong>AWS RDS (PostgreSQL)</strong>, improving reliability and reducing manual interventions.</li>
+            <li>Built <strong>EDL frameworks in Databricks</strong> for processing semi-structured data (Excel, JSON), improving transformation efficiency by <strong>30%</strong>.</li>
+            <li>Designed and optimized <strong>PostgreSQL</strong> schemas, indexes, and queries to accelerate analytical reporting and dashboard performance.</li>
+            <li>Migrated large-scale datasets between <strong>Databricks</strong> and <strong>AWS RDS</strong> using partitioning and query optimization for scalable retrieval.</li>
+            <li>Built and scheduled <strong>EDL workflows</strong> handling batch and incremental loads across multiple sources.</li>
+            <li>Version-controlled modular <strong>Airflow DAG files</strong> (Python), enabling reusable components and easier maintenance.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <h3>HCLTech, Hyderabad — Associate Software Engineer</h3>
+          <div class="exp-meta">Aug 2021 – Aug 2022</div>
+          <ul>
+            <li>Developed <strong>Oracle PL/SQL</strong> procedures for automated data processing and ETL operations.</li>
+            <li>Built efficient data transformation scripts reducing processing time by <strong>25%</strong>.</li>
+            <li>Collaborated with cross-functional teams to deliver data solutions for business intelligence requirements.</li>
+            <li>Optimized database queries and implemented indexing strategies for improved performance.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <h3>Accenture, Hyderabad — Associate Software Engineer</h3>
+          <div class="exp-meta">Mar 2020 – Aug 2021</div>
+          <ul>
+            <li>Designed and implemented <strong>SQL Server</strong> database solutions for enterprise applications.</li>
+            <li>Developed data integration processes using <strong>SSIS</strong> for multiple data sources.</li>
+            <li>Created automated reporting solutions using <strong>SQL Server Reporting Services (SSRS)</strong>.</li>
+            <li>Participated in agile development practices and delivered solutions within tight deadlines.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2 class="hover-effect">Projects</h2>
+        <div class="proj-grid">
+          <div class="proj">
+            <h3>Solar Energy Analytics Platform</h3>
+            <div class="chips">
+              <span class="chip">Databricks</span>
+              <span class="chip">Python</span>
+              <span class="chip">Apache Airflow</span>
+            </div>
+            <p>Integrated SCADA/sensor data, weather inputs, and production metrics to build comprehensive solar analytics dashboards with predictive insights for operational optimization.</p>
+          </div>
+
+          <div class="proj">
+            <h3>Real-time Data Pipeline</h3>
+            <div class="chips">
+              <span class="chip">AWS S3</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">ETL</span>
+            </div>
+            <p>Built scalable ETL pipelines processing millions of records daily, with automated data quality checks and monitoring for reliable data delivery.</p>
+          </div>
+
+          <div class="proj">
+            <h3>Database Migration & Optimization</h3>
+            <div class="chips">
+              <span class="chip">Oracle</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Performance Tuning</span>
+            </div>
+            <p>Successfully migrated legacy Oracle databases to PostgreSQL with 40% performance improvement through query optimization and indexing strategies.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section id="certs">
+        <h2 class="hover-effect">Certifications</h2>
+        <div class="cert-grid">
+          <div class="cert">
+            <img class="cert-img" src="images/aws-certified-cloud-practitioner.png" alt="AWS Certified Cloud Practitioner" />
+            <h3>AWS Cloud Practitioner</h3>
+          </div>
+          <div class="cert">
+            <img class="cert-img" src="images/databricks-certified-associate-developer.png" alt="Databricks Certified Associate Developer" />
+            <h3>Databricks Associate Developer</h3>
+          </div>
+          <div class="cert">
+            <img class="cert-img" src="images/oracle-database-sql-certified-associate.png" alt="Oracle Database SQL Certified Associate" />
+            <h3>Oracle SQL Associate</h3>
+          </div>
+          <div class="cert">
+            <img class="cert-img" src="images/microsoft-azure-fundamentals.png" alt="Microsoft Azure Fundamentals" />
+            <h3>Azure Fundamentals</h3>
+          </div>
+          <div class="cert">
+            <img class="cert-img" src="images/snowflake-snowpro-core.png" alt="SnowPro Core Certification" />
+            <h3>SnowPro Core</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2 class="hover-effect">Contact</h2>
+        <p>
+          I'm always interested in discussing new opportunities, data engineering challenges, or potential collaborations. 
+          Feel free to reach out if you'd like to connect!
+        </p>
+        <p>
+          📧 <a href="mailto:ashrafahmadcle@gmail.com">ashrafahmadcle@gmail.com</a><br/>
+          💼 <a href="https://www.linkedin.com/in/sashrafg" target="_blank" rel="noopener">LinkedIn Profile</a><br/>
+          🐙 <a href="https://github.com/shaikashraf-047" target="_blank" rel="noopener">GitHub Profile</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Shaik Ashraf Ahammad — All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Modal for certificate images -->
+  <div id="imgModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal functionality for certificates
+    document.querySelectorAll('.cert-img').forEach(img => {
+      img.addEventListener('click', function() {
+        document.getElementById('imgModal').style.display = "block";
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('caption').innerText = this.alt;
+      });
+    });
+
+    document.querySelector('.close').onclick = function() {
+      document.getElementById('imgModal').style.display = "none";
+    };
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById('imgModal')) {
+        document.getElementById('imgModal').style.display = "none";
+      }
+    };
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add loading animation for images
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('load', function() {
+        this.style.opacity = '1';
+      });
+    });
+  </script>
+
+</body>
+</html>
