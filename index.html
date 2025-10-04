@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shaik Ashraf Ahammad — Data Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="description" content="Portfolio of Shaik Ashraf Ahammad — Data Engineer specializing in Databricks, Apache Airflow, PostgreSQL, AWS RDS, EDL, and solar energy analytics."/>
+
+  <style>
+    :root{
+      --bg:#263231;
+      --fg:#fff;
+      --text:#222;
+      --muted:#6b7280;
+      --accent:#DBB031;
+      --chip:#f3f4f6;
+    }
+    *{box-sizing:border-box}
+    body { font-family:'Poppins',sans-serif; margin:0; color:var(--text); background:#fff; }
+    h1,h2,h3 { margin:0; font-weight:700; }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; height:auto; }
+
+    /* Hero */
+    .hero { background:var(--bg); color:var(--fg); padding:60px 20px; }
+    .container { max-width:1100px; margin:0 auto; }
+    .hero .flex { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; }
+    .hero-text { flex:1 1 560px; }
+    .hero-text h3 { font-size:18px; margin-bottom:10px; color:#d1d5db; }
+    .hero-text h1 { font-size:48px; margin-bottom:12px; letter-spacing:.5px; text-transform:uppercase; }
+    .hero-text .last-name { color:var(--accent); }
+    .hero-text p { font-size:18px; margin-bottom:20px; color:#e5e7eb; }
+    .btn-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn {
+      display:inline-block; padding:10px 16px; background:#fff; color:var(--bg);
+      border-radius:8px; font-weight:600; border:2px solid transparent; transition:.25s;
+    }
+    .btn:hover{ background:var(--accent); color:#fff; border-color:var(--accent); transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.2); }
+    .hero-profile { flex:1 1 320px; text-align:center; }
+    .hero-profile img { width:220px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,.3); margin-bottom:16px; }
+    .social { display:flex; justify-content:center; gap:10px; }
+    .social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:#fff; color:#222; border-radius:6px; transition:.25s; }
+    .social a:hover{ transform:translateY(-2px) }
+
+    main { max-width:1000px; margin:50px auto; padding:0 20px; }
+    section { margin-bottom:50px; }
+    section h2 { margin-bottom:14px; font-size:28px; }
+
+    /* Chips / badges */
+    .chips { display:flex; flex-wrap:wrap; gap:10px; }
+    .chip  { background:var(--chip); padding:8px 12px; border-radius:999px; font-weight:600; font-size:14px; }
+
+    /* Experience */
+    .exp-card { border:1px solid #e5e7eb; border-radius:12px; padding:18px; margin-bottom:16px; }
+    .exp-card h3 { font-size:18px; }
+    .exp-meta { color:var(--muted); font-weight:600; margin:6px 0 10px 0; }
+    .exp-card ul { margin:0; padding-left:18px; }
+    .exp-card li { margin:8px 0; line-height:1.5; }
+
+    /* Projects */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .proj {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(30, 41, 59, 0.06);
+      transition: 
+        background 0.3s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.3s cubic-bezier(0.4,0,0.2,1),
+        box-shadow 0.3s cubic-bezier(0.4,0,0.2,1),
+        transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .proj:hover {
+      background: #eff6ff;
+      border-color: #DBB031;
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.15);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .proj h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+    .proj:hover h3 {
+      color: #DBB031;
+    }
+    .proj p {
+      margin: 8px 0 0 0;
+      color: #374151;
+      transition: color 0.3s;
+    }
+    .proj:hover p {
+      color: #1e293b;
+    }
+
+    /* Footer */
+    footer { background:#f7f7f7; padding:20px 0; text-align:center; font-size:14px; color:#333; }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .hero .flex{ flex-direction:column; text-align:center; }
+      .hero-text h1{ font-size:34px; }
+      .hero-profile img{ width:160px; }
+    }
+
+    /* Print */
+    @media print {
+      .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .btn, .social { display:none !important; }
+      a[href^="http"]::after { content:" (" attr(href) ")"; font-size:12px; color:#555; }
+    }
+
+    .hover-effect {
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    .hover-effect:hover {
+      color: #DBB031;
+    }
+
+    /* Certifications */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .cert {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(30, 41, 59, 0.06);
+      text-align: center;
+      cursor: pointer;
+      transition: 
+        background 0.3s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+    }
+    .cert:hover {
+      background: #eff6ff;
+      border-color: #DBB031;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 6px 24px rgba(219, 176, 49, 0.15);
+    }
+    .cert-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      transition: box-shadow 0.3s;
+    }
+    .cert:hover .cert-img {
+      box-shadow: 0 2px 12px rgba(30, 41, 59, 0.10);
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      padding-top: 80px;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      display:block;
+      margin: auto;
+      max-width: 80vw;
+      max-height: 70vh;
+      border-radius: 10px;
+      background: white;
+      padding: 12px;
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.30);
+    }
+    .close {
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      color: #eee;
+      font-size: 38px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 100;
+    }
+    .close:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="flex">
+        <div class="hero-text">
+          <h3>Hello, I'm</h3>
+          <h1><span>Shaik</span> <span class="last-name">Ashraf</span></h1>
+          <p>Data Engineer specializing in Snowflake, Databricks, Apache Airflow, PostgreSQL, Oracle SQL & PL/SQL,  AWS RDS, and EDL — building reliable data pipelines and analytics platforms.</p>
+          <div class="btn-row">
+            <a href="#projects" class="btn">See Projects</a>
+            <a href="#contact" class="btn" aria-label="Contact">Contact</a>
+            <a href="images/Shaik_Ashraf_Ahammad_Resume.docx" class="btn" download>Download Resume</a>
+          </div>
+        </div>
+        <div class="hero-profile" aria-label="Profile">
+          <img src="images/profile.png" alt="Shaik Ashraf Ahammad — profile photo" />
+          <div class="social">
+            <a href="https://linkedin.com/in/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
+            <a href="mailto:ashrafahmadcle@gmail.com" aria-label="Email"><i class="fa fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container">
+    <!-- About -->
+    <section id="about">
+      <h2 class="hover-effect">About Me</h2>
+      <p>
+	  <!-- I’m a Data Engineer with <strong>5+ years</strong> of experience building scalable, reliable data pipelines and platforms for analytics.  -->
+      <!-- I specialize in database migration, orchestration, and data transformation using <strong>Databricks (PySpark)</strong>, -->
+      <!-- <strong>Apache Airflow</strong>, <strong>PostgreSQL/AWS RDS</strong>, <strong>EDL/ETL</strong>, and cloud storage such as <strong>AWS S3</strong>. -->
+      <!-- I design and optimize complex SQL, architect batch/incremental ELT workflows, and apply robust data modeling and performance-tuning techniques  -->
+      <!-- to deliver production-ready solutions. Recently, I’ve focused on <strong>solar energy analytics</strong> — integrating SCADA/sensor data, -->
+      <!-- weather inputs, and production metrics to power operational dashboards and predictive insights. -->
+	  
+	  
+	  Seasoned Data Engineer specializing in building scalable and reliable data pipelines and platforms for analytics.
+	  Extensive hands-on expertise in database migration, orchestration, and complex data transformation using Snowflake, Databricks ,
+	  Apache Airflow, Oracle SQL & PL/SQL, PostgreSQL/AWS RDS, EDL/ETL, and cloud storage such as AWS S3.
+	  Skilled in designing and optimizing complex SQL, architecting both batch and incremental ELT workflows,
+	  and applying advanced data modeling and performance-tuning techniques to deliver production-ready solutions.
+	  Recently focused on solar energy analytics—integrating SCADA/sensor data,
+	  weather inputs, and production metrics to power operational dashboards and predictive insights. 
+	  Recognized for delivering high-impact data solutions that drive operational excellence and business value.
+
+
+	  
+	  
+	  </p>
+      <div class="chips" aria-label="Skills at a glance">
+        <span class="chip hover-effect">Databricks</span>
+        <span class="chip hover-effect">Snowflake</span>
+        <span class="chip hover-effect">Apache Airflow</span>
+        <span class="chip hover-effect">PostgreSQL</span>
+        <span class="chip hover-effect">Oracle SQL - PL/SQL</span>
+        <span class="chip hover-effect">AWS RDS</span>
+        <span class="chip hover-effect">AWS S3</span>
+        <span class="chip hover-effect">EDL / ETL</span>
+        <span class="chip hover-effect">Python</span>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="hover-effect">Experience</h2>
+      <article class="exp-card">
+        <h3>Genpact, Hyderabad — Consultant · Data Engineer</h3>
+        <div class="exp-meta">July 2025 – Present</div>
+        <ul>
+          <li>Implemented <strong>Airflow DAGs</strong> to orchestrate ingestion between <strong>AWS S3</strong>, <strong>Databricks</strong>, and <strong>AWS RDS (PostgreSQL)</strong>, improving reliability and reducing manual interventions.</li>
+          <li>Built <strong>EDL frameworks in Databricks</strong> for processing semi-structured data (Excel, JSON), improving transformation efficiency by <strong>30%</strong>.</li>
+          <li>Designed and optimized <strong>PostgreSQL</strong> schemas, indexes, and queries to accelerate analytical reporting and dashboard performance.</li>
+          <li>Migrated large-scale datasets between <strong>Databricks</strong> and <strong>AWS RDS</strong> using partitioning and query optimization for scalable retrieval.</li>
+          <li>Built and scheduled <strong>EDL workflows</strong> handling batch and incremental loads across multiple sources.</li>
+          <li>Version-controlled modular <strong>Airflow DAG files</strong> (Python), enabling reusable components and easier maintenance.</li>
+        </ul>
+      </article>
+      <article class="exp-card">
+        <h3>Genpact — Consultant · Snowflake/ETL</h3>
+        <div class="exp-meta">Aug 2021 – Jun 2025</div>
+        <ul>
+          <li>Designed automated data pipelines with Streams, Tasks, and Snowpipe, ingesting data from <strong>AWS S3</strong>.</li>
+          <li>Migrated data from SQL Server/Oracle to cloud warehouses; implemented time travel and zero-copy clone for cost-efficient analytics.</li>
+          <li>Partnered with onsite teams for requirements, solution design, and code walkthroughs.</li>
+        </ul>
+      </article>
+      <article class="exp-card">
+        <h3>Zentek Infosoft — Software Engineer · PL/SQL</h3>
+        <div class="exp-meta">Jul 2020 – Jul 2021</div>
+        <ul>
+          <li>Developed and optimized PL/SQL packages, procedures, and triggers for enterprise applications.</li>
+          <li>Migrated workloads from Oracle to cloud data warehouses; automated DQ checks using PL/SQL and dynamic SQL.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="hover-effect">Projects</h2>
+      <div class="proj-grid">
+        <article class="proj">
+          <h3>GE Vernova — Sourcing 360</h3>
+          <p>Built Databricks + Airflow pipelines integrating SCADA/sensor data and weather forecasts; modeled PostgreSQL schemas to power real-time dashboards on panel output, degradation, and anomaly detection.</p>
+        </article>
+        <article class="proj">
+          <h3>GE Vernova — GEEPSAM</h3>
+          <p>Built Databricks + Airflow pipelines integrating SCADA/sensor data and weather forecasts; modeled PostgreSQL schemas to power real-time dashboards on panel output, degradation, and anomaly detection.</p>
+        </article>
+        <article class="proj">
+          <h3>Terex — Data Warehouse Modernization</h3>
+          <p>Migrated legacy sources with Informatica to cloud targets; introduced Airflow-based orchestration and optimized Databricks notebooks for cost and runtime.</p>
+        </article>
+        <article class="proj">
+          <h3>Estee Lauder — Product Data Processing</h3>
+          <p>Implemented PL/SQL workflows and query tuning to support underwriting operations; improved data reliability and reporting SLAs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs">
+      <h2 class="hover-effect">Certifications</h2>
+      <div class="cert-grid">
+        <article class="cert">
+          <img src="images/SnowPro Core Certification.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>SnowPro Core Certified</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/SDLC.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>Software Development lifecycle Training-SDLC</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/GigaAcademy.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>GigaAcademy Data & AI Delivery Lead
+ School_Quiz</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/ime4.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>SnowPro Core Certified</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/ime5.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>SnowPro Core Certified</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/ime6.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>SnowPro Core Certified</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/ime7.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>SnowPro Core Certified</p>
+        </article>
+		
+		<article class="cert">
+          <img src="images/ime8.png" alt="SnowPro Core Certified" class="cert-img" />
+          <p>SnowPro Core Certified</p>
+        </article>
+		
+		
+        <!-- Add more certifications by copying the article block -->
+      </div>
+
+      <!-- Modal Overlay -->
+      <div id="imgModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Certificate" />
+        <div id="caption"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="hover-effect">Contact</h2>
+      <p>
+        <strong>Phone:</strong> <a href="tel:+918344678344">+91 83446 78344</a><br/>
+        <strong>Email:</strong> <a href="mailto:ashrafahmadcle@gmail.com">ashrafahmadcle@gmail.com</a><br/>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Shaik Ashraf Ahammad — All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal functionality for certificates
+    document.querySelectorAll('.cert-img').forEach(img => {
+      img.addEventListener('click', function() {
+        document.getElementById('imgModal').style.display = "block";
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('caption').innerText = this.alt;
+      });
+    });
+
+    document.querySelector('.close').onclick = function() {
+      document.getElementById('imgModal').style.display = "none";
+    };
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById('imgModal')) {
+        document.getElementById('imgModal').style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>
